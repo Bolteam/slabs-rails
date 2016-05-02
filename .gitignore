@@ -1,0 +1,5 @@
+# Ignore docs files
+*.gem
+.sass-cache
+.ruby-version
+copy_files.sh
