@@ -2,11 +2,11 @@ module SlabsRails
   class << self
     # Inspired by Kaminari
     def load!
-
       if rails?
         register_rails_engine
+      elsif sprockets?
+        register_sprockets
       end
-
       configure_sass
     end
 
@@ -28,9 +28,9 @@ module SlabsRails
     end
 
     # Environment detection helpers
-    def asset_pipeline?
-      defined?(::Sprockets)
-    end
+    def sprockets?
+       defined?(::Sprockets)
+     end
 
     def rails?
       defined?(::Rails)
@@ -44,6 +44,11 @@ module SlabsRails
 
     def register_rails_engine
       require 'slabs-rails/engine'
+    end
+
+    def register_sprockets
+      Sprockets.append_path(stylesheets_path)
+      Sprockets.append_path(javascripts_path)
     end
   end
 end
