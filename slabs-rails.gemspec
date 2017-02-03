@@ -1,9 +1,10 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'slabs-rails/version'
 
 Gem::Specification.new do |s|
   s.name     = "slabs-rails"
-  s.version  = "1.0.0"
+  s.version  = SlabsRails::VERSION
   s.authors  = ["Jorge Najera"]
   s.email    = 'jorge.najera@boltech.mx'
   s.summary  = "Slabs Framework for Rails"
