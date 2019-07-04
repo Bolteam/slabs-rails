@@ -6,8 +6,12 @@ module SlabsRails
         register_rails_engine
       elsif sprockets?
         register_sprockets
+      elsif defined?(::Sass) && ::Sass.respond_to?(:load_paths)
+        # The deprecated `sass` gem:
+        ::Sass.load_paths << stylesheets_path
+        # bootstrap requires minimum precision of 8, see https://github.com/twbs/bootstrap-sass/issues/409
+        ::Sass::Script::Number.precision = [8, ::Sass::Script::Number.precision].max
       end
-      configure_sass
     end
 
     # Paths
@@ -37,10 +41,6 @@ module SlabsRails
     end
 
     private
-
-    def configure_sass
-      ::Sass.load_paths << stylesheets_path
-    end
 
     def register_rails_engine
       require 'slabs-rails/engine'

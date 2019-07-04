@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/Boltech/slabs-rails"
   s.license  = 'MIT'
 
-  s.add_runtime_dependency 'sass', '~> 3.3'
+  s.add_runtime_dependency 'sassc', '>= 1.12.1'
 
   # Twitter's Bootstrap 3.1.x
   s.add_development_dependency 'bootstrap-sass', '~> 3.3.6'
